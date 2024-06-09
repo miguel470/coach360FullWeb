@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exercises",
+  "info": {
+    "singularName": "exercise",
+    "pluralName": "exercises",
+    "displayName": "Exercise",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "trainings": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::training.training",
+      "inversedBy": "exercises"
+    },
+    "creator_id": {
+      "type": "biginteger"
+    },
+    "usersFav": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "exercises_fav"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Tiros",
+        "Pases",
+        "Regates",
+        "Defensa",
+        "Táctica",
+        "Condición Física"
+      ]
+    }
+  }
+}
